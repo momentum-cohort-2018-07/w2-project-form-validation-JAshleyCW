@@ -7,19 +7,19 @@ console.log('Add validation!'); // just to make sure I'm working :)
 document.getElementById('parking-form').addEventListener('submit', function (event) {
     event.preventDefault()
 
-    // clearError()
+    clearError()
 
     // var for the input fields -- these are all required fields .value pulls the value of 'name'
     // check to see if the input fields are empty .value
-    var name = document.getElementById('name').value
-    var carYear = document.getElementById('car-year').value
-    var carMake = document.getElementById('car-make').value
-    var carModel = document.getElementById('car-model').value
-    var dateParking = document.getElementById('start-date').value
-    var numOfDays = document.getElementById('days').value
-    var creditCard = document.getElementById('credit-card').value
-    var cvv = document.getElementById('cvv').value
-    var expiration = document.getElementById('expiration').value
+    var name = document.getElementById('name').value.trim()
+    var carYear = document.getElementById('car-year').value.trim()
+    var carMake = document.getElementById('car-make').value.trim()
+    var carModel = document.getElementById('car-model').value.trim()
+    var dateParking = document.getElementById('start-date').value.trim()
+    var numOfDays = document.getElementById('days').value.trim()
+    var creditCard = document.getElementById('credit-card').value.trim()
+    var cvv = document.getElementById('cvv').value.trim()
+    var expiration = document.getElementById('expiration').value.trim()
 
     if (name === '') {
         emptyNameError()
@@ -133,4 +133,13 @@ function emptyExpError () {
     expField.appendChild(errorMessDiv)
     expField.classList.add('input-invalid')
 }
+function clearError () {
+    var nameField = document.getElementById('name-field')
+    nameField.classList.remove('input-invalid') 
+
+    var errorMsg = nameField.querySelector('input-invalid')
+    if (errorMsg) {
+        errorMsg.remove()
+    }
+ }
 
